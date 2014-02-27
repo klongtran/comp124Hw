@@ -12,13 +12,19 @@ public class Tiger
     }
 
     @Override
+    public String giveMeat() {
+        return "It tore through it!";
+    }
+
+    @Override
     public String tickle()
     {
         return "OUCH! It bit off your arm!";
     }
 
-    public String getName()
-    {
-        return "Tiger";
+    @Override
+    public String feedFish() {
+        return "It ate it, but immediately spit it on the ground";
     }
+
 }

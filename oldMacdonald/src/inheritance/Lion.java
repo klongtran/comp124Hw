@@ -11,11 +11,17 @@ public class Lion
 	@Override
 	public String giveMeat()
 	{
-		return "tears it apart";
+		return "It tore right through it!";
 	}
 
-    public String getName()
-    {
-        return "Lion";
+    @Override
+    public String tickle() {
+        return "It bit off your legs!";
     }
+
+    @Override
+    public String feedFish() {
+        return "It wants to eat you instead!";
+    }
+
 }

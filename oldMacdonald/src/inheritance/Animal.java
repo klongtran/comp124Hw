@@ -2,9 +2,8 @@ package inheritance;
 
 abstract public class Animal
 {
-
+    //The animal class has
     public String species;
-    private String name;
 
     public Animal(String species)
 	{
@@ -13,8 +12,6 @@ abstract public class Animal
 
 	abstract public String pet();
 	abstract public String giveMeat();
-
-    public String getName() {
-        return name;
-    }
+    abstract public String tickle();
+    abstract public String feedFish();
 }

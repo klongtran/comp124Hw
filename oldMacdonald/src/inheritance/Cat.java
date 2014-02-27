@@ -1,24 +1,26 @@
 package inheritance;
 
-/**
- * Created by Khanh-Long on 2/27/14.
- */
 public class Cat
-        extends Feline
+    extends Feline
 {
     public Cat()
     {
-        super("cat");
+        super("Cat");
+    }
+
+    @Override
+    public String giveMeat() {
+        return "Nah, not interested";
+    }
+
+    @Override
+    public String tickle() {
+        return "PURR PURR PURR";
     }
 
     @Override
     public String feedFish()
     {
         return "Yummy! A whole salmon's just gone!";
-    }
-
-    public String getName()
-    {
-        return "Cat";
     }
 }

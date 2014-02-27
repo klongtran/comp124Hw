@@ -11,6 +11,6 @@ abstract public class Feline
 	@Override
 	public String pet()
 	{
-		return "purrs";
+		return "Purr purr";
 	}
 }
