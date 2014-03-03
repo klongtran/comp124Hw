@@ -21,7 +21,7 @@ public class Application
 		{
 			println("Day " + theGame.getDay(day));
 			println("What do you want to do?");
-
+            getAction();
 			int action = getAction(theGame.getActions());
 
 			List<Person> boys = theGame.getLoveInterests();
@@ -31,17 +31,5 @@ public class Application
 		}
 		String ending = theGame.getEnding();
 		println(theGame.getEndingText(ending));
-	}
-
-	private String getAction(List<String> actions)
-	{
-		for (int i=0; i<actions.size(); i++)
-		{
-			println(i + ") " + actions.get(i));
-		}
-		print("Choice: ");
-		int selectedActionIndex = readInt();
-		String action = actions.get(selectedActionIndex);
-		return action;
 	}
 }

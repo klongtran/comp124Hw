@@ -26,6 +26,8 @@ public class Game {
         List<Person> people = new LinkedList<>();
         Person aPerson;
 
+
+
         aPerson = new Person("Alice", 0);
         people.add(aPerson);
 
