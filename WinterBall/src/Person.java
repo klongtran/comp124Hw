@@ -1,21 +1,39 @@
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by Khanh-Long on 2/26/14.
  */
 public class Person {
 
-    public Person(String name, int loveLevel) {
+    public Person(String name, List<String> favoritePresents) {
         targetName = name;
-        targetLoveLevel = loveLevel;
+        targetFavoritePresents = favoritePresents;
     }
 
-    public void setName(String name) {
-        targetName = name;
+    public String getName() { return targetName;};
+
+    public void loveDevelop(String present){
+        if (targetFavoritePresents.contains(present)){
+            targetLoveLevel++;
+        }
     }
 
-    public void setTargetLoveLevel(int loveLevel) { targetLoveLevel = loveLevel}
+    public String getEnding(){
+        String response = null;
+
+        if (targetLoveLevel >= LOVE_LEVEL_FOR_A_DATE){
+            response = "Date";
+        }   else if (targetLoveLevel < LOVE_LEVEL_FOR_A_DATE){
+            response = "noDate";
+        }
+
+        return response;
+    }
 
     public static final int LOVE_LEVEL_FOR_A_DATE = 5;
 
     private String targetName;
-    private int targetLoveLevel;
+    private int targetLoveLevel = 0;
+    private List<String> targetFavoritePresents = new ArrayList<>();
 }

@@ -1,5 +1,6 @@
-import Game.Game;
+
 import acm.program.ConsoleProgram;
+import sun.net.www.content.image.gif;
 
 import java.util.List;
 
@@ -14,22 +15,29 @@ public class Application
 		println();
 
 		Game theGame = new Game();
-
-        int day = 0;
+        List<Person> girls = theGame.getLoveInterests();
+        List<String> gifts = theGame.getActions();
+        int personChoice = 0;
 
 		while (!theGame.isOver())
 		{
-			println("Day " + theGame.getDay(day));
-			println("What do you want to do?");
-            getAction();
-			int action = getAction(theGame.getActions());
+            println("Day " + theGame.getDay());
+			println("Who do you want to gift? (1-Alice/2-Emma/3-Michelle)");
 
-			List<Person> boys = theGame.getLoveInterests();
+            personChoice = readInt()-1;
 
-			println();
-            day++;
+            println("Sounds like a plan. What do you wanna send " + girls.get(personChoice).getName() + "'s way? (1/2/3/4/5)");
+            println(gifts);
+
+            int giftChoice = readInt()-1;
+
+            girls.get(personChoice).loveDevelop(gifts.get(giftChoice));
+
+            println();
+
+            theGame.day++;
 		}
-		String ending = theGame.getEnding();
+		String ending = girls.get(personChoice).getEnding();
 		println(theGame.getEndingText(ending));
 	}
 }
