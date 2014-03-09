@@ -48,13 +48,10 @@ public class Game {
     public String getEndingText(String endingID) {
         if (endingID.equals("noDate"))
         {
-            return "Finally the day of the Winter Ball is here. " +
-                    "Unfortunately, no matter how hard you tried (or didn't try), you just couldn't " +
-                    "find that certain special someone who had the qualities you were looking for, " +
-                    "which is a nice way of saying that nobody liked you enough to ask you out.";
+            return " better luck next year! You can still bring your pet though.";
         }
 
-        return "Sorry, you got an ending that doesn't exist.";
+        return " you got a date to Winterball!";
     }
 
     public boolean isOver() {
@@ -67,5 +64,5 @@ public class Game {
         return winterBallStart;
     }
 
-    public int day = 7;
+    public int day = 9;
 }

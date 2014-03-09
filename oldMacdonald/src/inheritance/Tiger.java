@@ -24,7 +24,7 @@ public class Tiger
 
     @Override
     public String feedFish() {
-        return "It ate it, but immediately spit it on the ground";
+        return "It ate your friend and the driving wheel in whole. Now it's your turn!";
     }
 
 }

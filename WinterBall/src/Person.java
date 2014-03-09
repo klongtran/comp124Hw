@@ -31,7 +31,7 @@ public class Person {
         return response;
     }
 
-    public static final int LOVE_LEVEL_FOR_A_DATE = 5;
+    public static final int LOVE_LEVEL_FOR_A_DATE = 3;
 
     private String targetName;
     private int targetLoveLevel = 0;

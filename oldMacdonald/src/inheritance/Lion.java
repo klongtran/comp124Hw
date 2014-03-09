@@ -21,7 +21,7 @@ public class Lion
 
     @Override
     public String feedFish() {
-        return "It wants to eat you instead!";
+        return "It wants to chase you down and eat you instead!";
     }
 
 }

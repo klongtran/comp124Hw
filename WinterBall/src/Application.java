@@ -37,7 +37,13 @@ public class Application
 
             theGame.day++;
 		}
-		String ending = girls.get(personChoice).getEnding();
-		println(theGame.getEndingText(ending));
+
+        for(int i = 0; i<girls.size();i++){
+            String ending = girls.get(i).getEnding();
+
+            println("With " + girls.get(i).getName() + theGame.getEndingText(ending));
+        }
+
+
 	}
 }

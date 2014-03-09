@@ -21,6 +21,6 @@ public class Cat
     @Override
     public String feedFish()
     {
-        return "Yummy! A whole salmon's just gone!";
+        return "It stays back and licks off its fur...";
     }
 }

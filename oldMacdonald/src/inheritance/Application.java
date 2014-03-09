@@ -84,7 +84,7 @@ public class Application
         actions.add("1. Feed OREOs");
         actions.add("2. Give Dalai Lama ticket");
         actions.add("3. Tickle the beast");
-        actions.add("4. Run, leave your girlfriend behind");
+        actions.add("4. Just run, leave your girlfriend behind!");
 
         return actions;
     }
