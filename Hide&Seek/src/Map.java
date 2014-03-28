@@ -8,9 +8,14 @@ import java.util.Random;
 /**
  * Created by Khanh-Long on 3/24/14.
  */
-public class Map extends GraphicsProgram{
+public class Map extends GraphicsProgram {
 
-    Image tile = getImage("")
+    private static final int MAP_WIDTH = 640;
+    private static final int MAP_HEIGHT = 320;
+
+    static String groundFile = "grass.png";
+
+    Image groundImage = getImage(getCodeBase(), groundFile);
 
     char playerChar = '@';
     char groundChar = '.';
@@ -79,7 +84,6 @@ public class Map extends GraphicsProgram{
             case 'N':
             case 'n':
                 if(checkForWall()){
-                    setPlayerLocation(playerX, playerY);
                     break;
                 }
                 if (checkForMonster()) {
@@ -101,10 +105,8 @@ public class Map extends GraphicsProgram{
                 break;
             case 'S':
             case 's':
-                if(checkForWall()){
-                    setPlayerLocation(playerX, playerY);
+                if(checkForWall())
                     break;
-                }
                 if (checkForMonster()) {
                     if (beatMonster()) { playerHealth--; };
                     map[playerX][playerY] = groundChar;
@@ -122,8 +124,7 @@ public class Map extends GraphicsProgram{
                 break;
             case 'E':
             case 'e':
-                if(checkForWall()){
-                    setPlayerLocation(playerX, playerY);
+                if(checkForWall()) {
                     break;
                 }
                 if (checkForMonster()) {
@@ -143,8 +144,7 @@ public class Map extends GraphicsProgram{
                 break;
             case 'W':
             case 'w':
-                if(checkForWall()){
-                    setPlayerLocation(playerX, playerY);
+                if(checkForWall()) {
                     break;
                 }
                 if (checkForMonster()) {
