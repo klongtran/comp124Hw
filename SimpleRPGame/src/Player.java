@@ -8,28 +8,59 @@ public class Player {
 
     private int x, y;
     private ImageManager im;
+    private Level level;
     public boolean up = false, dn = false, lt = false, rt = false;
-    private final int SPEED = 3;
+    //private final int SPEED = 3;
 
-    public Player(int x, int y, ImageManager im) {
+    public Player(int x, int y, Level level, ImageManager im) {
         this.x = x;
         this.y = y;
         this.im = im;
+        this.level = level;
     }
 
     public void tick() {
-        if (up) {
-            y -= SPEED;
+        if (up && (level.getTileType(x, y - 1) == 1)) {
+            y -= 1;
         }
-        if (dn) {
-            y += SPEED;
+        if (dn && (level.getTileType(x, y + 1) == 1)) {
+            y += 1;
         }
-        if (lt) {
-            x -= SPEED;
+        if (lt && (level.getTileType(x - 1, y) == 1)) {
+            x -= 1;
         }
-        if (rt) {
-            x += SPEED;
+        if (rt && (level.getTileType(x + 1, y) == 1)) {
+            x += 1;
         }
+    }
+
+    public boolean validLocation(int nx, int ny) {
+        if (isMountain(nx - 16, ny - 16)) {
+            return false;
+        }
+        if (isMountain(nx + 16, ny - 16)) {
+            return false;
+        }
+        if (isMountain(nx - 16, ny + 16)) {
+            return false;
+        }
+        if (isMountain(nx + 16, ny + 16)) {
+            return false;
+        }
+
+        // if all the points checked are unblocked then we're in an ok
+
+        // location
+
+        return true;
+    }
+
+    public boolean isMountain(int x, int y) {
+        if ((x >= 0) && (y >= 0))
+            if ((x <= 20) && (y <= 20))
+               if ((level.getTileType(x, y) == 2))
+                return true;
+        return false;
     }
 
     public void render(Graphics g) {

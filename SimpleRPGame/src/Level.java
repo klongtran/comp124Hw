@@ -1,13 +1,12 @@
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.util.List;
 
 /**
  * Created by Khanh-Long on 3/28/14.
  */
 public class Level {
 
-    private int[][] tiles;
+    public int[][] tiles;
     private int w, h;
 
     public Level(BufferedImage levelImage) {
@@ -33,6 +32,21 @@ public class Level {
                     case "ffde3d"://GOLD TILE
                         tiles[x][y] = 3;
                         break;
+                    case "ff3c35"://POTION TILE
+                        tiles[x][y] = 4;
+                        break;
+                    case "ff8419"://RED MONSTER TILE
+                        tiles[x][y] = 5;
+                        break;
+                    case "7cff77"://GREEN MONSTER TILE
+                        tiles[x][y] = 6;
+                        break;
+                    case "4635ff"://BLUE MONSTER TILE
+                        tiles[x][y] = 7;
+                        break;
+                    case "ff21b5"://TREASURE TILE
+                        tiles[x][y] = 8;
+                        break;
                     default:
                         tiles[x][y] = 1;
                         break;
@@ -44,7 +58,7 @@ public class Level {
     public void render(Graphics g) {
         for (int y = 0; y < h; y++) {
             for(int x = 0; x < w; x++) {
-                getTile(x, y).render(g, x * 16 * Game.SCALE, y * 16 * Game.SCALE);
+                getTile(x, y).render(g, x * Game.TILESIZE * Game.SCALE, y * Game.TILESIZE * Game.SCALE);
             }
         }
     }
@@ -57,9 +71,42 @@ public class Level {
                 return Tile.mountain;
             case 3:
                 return Tile.gold;
+            case 4:
+                return Tile.potion;
+            case 5:
+                return Tile.red;
+            case 6:
+                return Tile.green;
+            case 7:
+                return Tile.blue;
+            case 8:
+                return Tile.treasure;
             default:
                 return Tile.grass;
         }
     }
 
+    public int getTileType(int x, int y) {
+
+        switch (tiles[x][y]) {
+            case 1:
+                return 1;
+            case 2:
+                return 2;
+            case 3:
+                return 3;
+            case 4:
+                return 4;
+            case 5:
+                return 5;
+            case 6:
+                return 6;
+            case 7:
+                return 7;
+            case 8:
+                return 8;
+            default:
+                return 1;
+        }
+    }
 }

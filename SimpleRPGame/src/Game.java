@@ -8,7 +8,7 @@ import java.awt.image.BufferedImage;
  */
 public class Game extends Canvas implements Runnable {
 
-    public static final int WIDTH = 320, HEIGHT = 336, SCALE = 2, TILESIZE = 16;
+    public static final int WIDTH = 323, HEIGHT = 335, SCALE = 2, TILESIZE = 16;
     public static boolean running = false;
     //** Help game multitask */
     public Thread gameThread;
@@ -29,13 +29,12 @@ public class Game extends Canvas implements Runnable {
         //--- set the player variable to spritesheet
         im = new ImageManager(ss);
 
-        player = new Player(0, 0, im);
-
         BufferedImage limage = loader.load("/level.png");
         l1 = new Level(limage);
 
         this.addKeyListener(new KeyManager());
 
+        player = new Player(0, 0, l1, im);
     }
 
     public synchronized void start() {
@@ -64,7 +63,7 @@ public class Game extends Canvas implements Runnable {
 
         while (running) {
             long now = System.nanoTime();
-            delta += (now -lastTime) / ns;
+            delta += (now - lastTime) / ns;
             lastTime = now;
             // only update 60 times per second
             if(delta >= 1) {

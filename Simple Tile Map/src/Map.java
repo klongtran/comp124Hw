@@ -3,6 +3,7 @@
  */
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.util.Random;
 
 /**
  * The map holds the data about game area. In this case its responsible
@@ -20,8 +21,8 @@ public class Map {
     private static final int CLEAR = 0;
     /** The value indicating a blocked cell */
     private static final int BLOCKED = 1;
-    /** The value indicating gold */
-    private static final int GOLD = 2;
+    /** The value indicating potion */
+    private static final int POTION = 2;
     /** The value indicating monster */
     private static final int MONSTER = 3;
     /** The value indicating treasure */
@@ -38,10 +39,21 @@ public class Map {
     /** The actual data for our map */
     private int[][] data = new int[WIDTH][HEIGHT];
 
+    private int[][] dragonCoords, unicornCoords, puppycornCoords;
+
+    private float distanceToTreasure;
+
+    private int treasureX, treasureY;
+
+    public Dragon dragon;
+    public Unicorn unicorn;
+    public Puppycorn puppycorn;
     /**
      * Create a new map with some default contents
      */
     public Map() {
+
+        Random random = new Random();
         // create some default map data - it would be way
 
         // cooler to load this from a file and maybe provide
@@ -74,13 +86,24 @@ public class Map {
         data[4][9] = CLEAR;
         data[7][5] = CLEAR;
         data[7][4] = CLEAR;
+        data[12][9] = CLEAR;
         data[11][7] = CLEAR;
-        data[1][13] = GOLD;
-        data[5][13] = GOLD;
-        data[10][1] = GOLD;
-        data[4][9] = MONSTER;
-        data[11][7] = MONSTER;
-        data[13][8] = TREASURE;
+        data[1][13] = POTION;
+        data[5][13] = POTION;
+        data[10][1] = POTION;
+
+        dragon = new Dragon("Daenaerys", 10, random.nextInt(WIDTH), random.nextInt(HEIGHT));
+        unicorn = new Unicorn("Alice", 5, random.nextInt(WIDTH), random.nextInt(HEIGHT));
+        puppycorn = new Puppycorn("Bob", 7, random.nextInt(WIDTH), random.nextInt(HEIGHT));
+
+        data[dragon.getxCoord()][dragon.getyCoord()] = MONSTER;
+        data[unicorn.getxCoord()][unicorn.getyCoord()] = MONSTER;
+        data[puppycorn.getxCoord()][puppycorn.getyCoord()] = MONSTER;
+
+        treasureX = random.nextInt(WIDTH);
+        treasureY = random.nextInt(HEIGHT);
+
+        data[treasureX][treasureY] = TREASURE;
     }
 
     /**
@@ -105,14 +128,14 @@ public class Map {
                 if (data[x][y] == BLOCKED) {
                     g.setColor(Color.gray);
                 } else
-                if (data[x][y] == GOLD) {
-                    g.setColor(Color.yellow);
+                if (data[x][y] == POTION) {
+                    g.setColor(Color.pink);
                 } else
                 if (data[x][y] == MONSTER) {
                     g.setColor(Color.red);
                 } else
                 if (data[x][y] == TREASURE) {
-                    g.setColor(Color.green);
+                    g.setColor(Color.gray);
                 }
 
                 // draw the rectangle with a dark outline
@@ -141,10 +164,10 @@ public class Map {
         return data[(int) x][(int) y] == BLOCKED;
     }
 
-    public boolean gold(float x, float y) {
+    public boolean potion(float x, float y) {
         // look up the cell with potion
 
-        return data[(int) x][(int) y] == GOLD;
+        return data[(int) x][(int) y] == POTION;
     }
 
     public boolean monster(float x, float y) {
@@ -153,8 +176,16 @@ public class Map {
         return data[(int) x][(int) y] == MONSTER;
     }
 
+    public void setData(float x, float y, int k) {
+        data[(int) x][(int) y] = k;
+    }
+
 //    public void setCellColor(float x, float y) {
 //        g.fillRect((int)x*TILE_SIZE,(int)y*TILE_SIZE,TILE_SIZE,TILE_SIZE);
 //        g.setColor(g.getColor().darker());
 //    }
+
+    public int getTreasureX() { return treasureX;}
+    public int getTreasureY() { return treasureY;}
+
 }

@@ -11,6 +11,7 @@ import java.awt.event.KeyListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.image.BufferStrategy;
+import java.io.Console;
 import java.io.IOException;
 import java.net.URL;
 
@@ -187,7 +188,19 @@ public class Game extends Canvas implements KeyListener {
                 logic(delta % 5);
             }
 
-            System.out.println("Gold: " + player.getGold());
+            System.out.println("Health: " + player.getHealth());
+            System.out.println("Hunting status: " + player.HuntStatus());
+
+            if (player.foundTreasure()) {
+                System.out.println("You got it!!!");
+                gameRunning = false;
+            }
+
+            if (player.dead == true) {
+                System.out.println("You're dead! Better luck next time...");
+                gameRunning = false;
+            }
+
         }
     }
 
