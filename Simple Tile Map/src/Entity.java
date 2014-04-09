@@ -107,7 +107,8 @@ public class Entity {
 
             ang = (float) (Math.atan2(dy, dx) - (Math.PI / 2));
             return true;
-        } else if (potionLocation(nx, ny)) {
+        }
+        if (potionLocation(nx, ny)) {
             // if it is a gold location update the gold a player has
 
             health += 50;
@@ -122,7 +123,8 @@ public class Entity {
 
             ang = (float) (Math.atan2(dy, dx) - (Math.PI / 2));
             return true;
-        } else if (monsterLocation(nx, ny)) {
+        }
+        if (monsterLocation(nx, ny)) {
             //tell the user which animal was found
             MythicalAnimal enemy = getMonster((int) nx, (int) ny);
             System.out.println("You found " + enemy.getName() + "! Now slay it or die trying!");
